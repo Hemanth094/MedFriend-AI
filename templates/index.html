@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedFriend - Home | Your Trusted Healthcare Partner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Clerk SDK -->
+    <script data-clerk-publishable-key="{{ clerk_key }}" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" defer></script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="logo" id="logoLink">
+                <div class="logo-icon-wrapper">
+                    <span class="logo-icon">🤍</span>
+                </div>
+                <span class="logo-text">MedFriend</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('home') }}" class="nav-link active">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
+                <li class="nav-auth-slot">
+                    <button class="nav-link btn-nav-login" id="loginBtn">Login</button>
+                    <div id="navbarUser"></div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to MedFriend</h1>
+            <p class="hero-subtitle">Your trusted healthcare companion for a healthier tomorrow</p>
+            <p class="hero-description">We provide compassionate, professional healthcare services with a focus on your well-being and comfort.</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('services') }}" class="btn btn-primary">Our Services</a>
+                <a href="{{ url_for('about') }}" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-icon">🏥</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose MedFriend?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Expert Doctors</h3>
+                    <p>Board-certified physicians with years of experience in their respective fields.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💊</div>
+                    <h3>Comprehensive Care</h3>
+                    <p>From preventive care to specialized treatments, we cover all your health needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕐</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance and emergency care when you need it most.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Digital Health</h3>
+                    <p>Modern technology for seamless appointments and health record management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Take Control of Your Health?</h2>
+            <p>Schedule a consultation with our healthcare professionals today.</p>
+            <a href="{{ url_for('services') }}" class="btn btn-primary btn-large">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MedFriend. All rights reserved. | Your Health, Our Priority</p>
+        </div>
+    </footer>
+
+    <!-- Clerk Authentication Modal -->
+    <div class="clerk-modal" id="clerkModal">
+        <!-- <div class="clerk-modal-content"> -->
+            <!-- <div class="clerk-modal-header"> -->
+                <!-- <h2>Welcome to MedFriend</h2> -->
+                <!-- <button class="clerk-modal-close" id="closeClerkModal">&times;</button> -->
+            <!-- </div> -->
+            <div class="clerk-modal-body" id="clerk-auth-container">
+                <!-- Clerk authentication will be mounted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Button -->
+    <button class="chatbot-btn" id="chatbotBtn" aria-label="Open chatbot">
+        <span class="chatbot-icon">💬</span>
+    </button>
+
+    <!-- Chatbot Popup -->
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chatbot-header">
+            <h3>MedFriend Assistant</h3>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="reset-btn" id="resetChatbot" title="Reset conversation" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 5px;">⟳</button>
+                <button class="close-btn" id="closeChatbot">&times;</button>
+            </div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Initial message will be added by backend on first interaction -->
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Type your message..." autocomplete="off">
+            <button id="chatbotSend" class="send-btn">Send</button>
+        </div>
+    </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

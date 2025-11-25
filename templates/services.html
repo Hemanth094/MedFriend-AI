@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - MedFriend | Comprehensive Healthcare Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Clerk SDK -->
+    <script data-clerk-publishable-key="{{ clerk_key }}" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" defer></script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="logo" id="logoLink">
+                <div class="logo-icon-wrapper">
+                    <span class="logo-icon">🤍</span>
+                </div>
+                <span class="logo-text">MedFriend</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                <li><a href="{{ url_for('services') }}" class="nav-link active">Services</a></li>
+                <li class="nav-auth-slot">
+                    <button class="nav-link btn-nav-login" id="loginBtn">Login</button>
+                    <div id="navbarUser"></div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">Our Services</h1>
+            <p class="page-subtitle">Comprehensive Healthcare Solutions for Every Need</p>
+        </div>
+    </section>
+
+    <!-- Services Content -->
+    <section class="services-content">
+        <div class="container">
+            <div class="services-intro">
+                <p>At MedFriend, we offer a wide range of healthcare services designed to meet your medical needs. From routine check-ups to specialized treatments, our team is here to support your health journey.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🩺</div>
+                    <h3>General Medicine</h3>
+                    <p>Comprehensive primary care services including routine check-ups, health screenings, and treatment of common illnesses.</p>
+                    <ul class="service-features">
+                        <li>Annual physical exams</li>
+                        <li>Health screenings</li>
+                        <li>Chronic disease management</li>
+                        <li>Vaccinations</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">❤️</div>
+                    <h3>Cardiology</h3>
+                    <p>Expert heart and cardiovascular care with advanced diagnostic tools and personalized treatment plans.</p>
+                    <ul class="service-features">
+                        <li>Heart health assessments</li>
+                        <li>ECG and stress testing</li>
+                        <li>Cardiac rehabilitation</li>
+                        <li>Preventive cardiology</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>Neurology</h3>
+                    <p>Specialized care for neurological conditions with state-of-the-art diagnostic and treatment options.</p>
+                    <ul class="service-features">
+                        <li>Headache management</li>
+                        <li>Epilepsy care</li>
+                        <li>Memory disorders</li>
+                        <li>Neurological consultations</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👶</div>
+                    <h3>Pediatrics</h3>
+                    <p>Comprehensive healthcare for infants, children, and adolescents in a child-friendly environment.</p>
+                    <ul class="service-features">
+                        <li>Well-child visits</li>
+                        <li>Immunizations</li>
+                        <li>Developmental assessments</li>
+                        <li>Acute illness care</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🦴</div>
+                    <h3>Orthopedics</h3>
+                    <p>Expert care for bone, joint, and muscle conditions with both surgical and non-surgical treatments.</p>
+                    <ul class="service-features">
+                        <li>Joint pain management</li>
+                        <li>Sports medicine</li>
+                        <li>Fracture care</li>
+                        <li>Physical therapy</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>Ophthalmology</h3>
+                    <p>Complete eye care services from routine eye exams to advanced surgical procedures.</p>
+                    <ul class="service-features">
+                        <li>Eye examinations</li>
+                        <li>Glaucoma screening</li>
+                        <li>Cataract surgery</li>
+                        <li>Vision correction</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Dermatology</h3>
+                    <p>Skin health and dermatological care for all ages, from acne to skin cancer screening.</p>
+                    <ul class="service-features">
+                        <li>Skin cancer screening</li>
+                        <li>Acne treatment</li>
+                        <li>Eczema and psoriasis care</li>
+                        <li>Cosmetic dermatology</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧪</div>
+                    <h3>Laboratory Services</h3>
+                    <p>Comprehensive diagnostic testing with fast, accurate results to support your healthcare needs.</p>
+                    <ul class="service-features">
+                        <li>Blood tests</li>
+                        <li>Urine analysis</li>
+                        <li>Pathology services</li>
+                        <li>Rapid test results</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="appointment-cta">
+                <h2>Ready to Schedule an Appointment?</h2>
+                <p>Contact us today to book a consultation with one of our healthcare professionals.</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary btn-large">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MedFriend. All rights reserved. | Your Health, Our Priority</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <button class="chatbot-btn" id="chatbotBtn" aria-label="Open chatbot">
+        <span class="chatbot-icon">💬</span>
+    </button>
+
+    <!-- Chatbot Popup -->
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chatbot-header">
+            <h3>MedFriend Assistant</h3>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="reset-btn" id="resetChatbot" title="Reset conversation" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 5px;">🔄</button>
+                <button class="close-btn" id="closeChatbot">&times;</button>
+            </div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Initial message will be added by backend on first interaction -->
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Type your message..." autocomplete="off">
+            <button id="chatbotSend" class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Clerk Authentication Modal -->
+    <div class="clerk-modal" id="clerkModal">
+        <div class="clerk-modal-content">
+            <div class="clerk-modal-header">
+                <h2>Welcome to MedFriend</h2>
+                <button class="clerk-modal-close" id="closeClerkModal">&times;</button>
+            </div>
+            <div class="clerk-modal-body" id="clerk-auth-container">
+                <!-- Clerk authentication will be mounted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

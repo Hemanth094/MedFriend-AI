@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MedFriend | Your Trusted Healthcare Partner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Clerk SDK -->
+    <script data-clerk-publishable-key="{{ clerk_key }}" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" defer></script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="logo" id="logoLink">
+                <div class="logo-icon-wrapper">
+                    <span class="logo-icon">🤍</span>
+                </div>
+                <span class="logo-text">MedFriend</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link active">About</a></li>
+                <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
+                <li class="nav-auth-slot">
+                    <button class="nav-link btn-nav-login" id="loginBtn">Login</button>
+                    <div id="navbarUser"></div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">About MedFriend</h1>
+            <p class="page-subtitle">Committed to Excellence in Healthcare</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-section">
+                <div class="about-text">
+                    <h2>Our Mission</h2>
+                    <p>At MedFriend, we believe that everyone deserves access to quality healthcare. Our mission is to provide compassionate, accessible, and professional medical services that prioritize patient well-being and comfort.</p>
+                    <p>We strive to create a healthcare environment where patients feel heard, understood, and cared for. Our team of dedicated professionals works tirelessly to ensure that every interaction is meaningful and every treatment is effective.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-icon">🎯</div>
+                </div>
+            </div>
+
+            <div class="about-section reverse">
+                <div class="about-text">
+                    <h2>Our Vision</h2>
+                    <p>We envision a future where healthcare is personalized, preventive, and patient-centered. Through innovation and dedication, we aim to transform the healthcare experience for our community.</p>
+                    <p>Our vision extends beyond treatment—we focus on wellness, prevention, and empowering individuals to take control of their health journey.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-icon">👁️</div>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">❤️</div>
+                        <h3>Compassion</h3>
+                        <p>We treat every patient with empathy, respect, and genuine care.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⭐</div>
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards in medical practice and patient care.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Integrity</h3>
+                        <p>We operate with honesty, transparency, and ethical principles.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Innovation</h3>
+                        <p>We embrace new technologies and methods to improve healthcare delivery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>Our Team</h2>
+                <p class="team-intro">Our diverse team of healthcare professionals brings together expertise, experience, and a shared commitment to patient care.</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">👨‍⚕️</div>
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p class="team-role">Chief Medical Officer</p>
+                        <p>20+ years of experience in internal medicine</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">👩‍⚕️</div>
+                        <h3>Dr. Michael Chen</h3>
+                        <p class="team-role">Head of Cardiology</p>
+                        <p>Specialized in preventive cardiology</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">👨‍⚕️</div>
+                        <h3>Dr. Emily Rodriguez</h3>
+                        <p class="team-role">Pediatric Specialist</p>
+                        <p>Dedicated to children's health and wellness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MedFriend. All rights reserved. | Your Health, Our Priority</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <button class="chatbot-btn" id="chatbotBtn" aria-label="Open chatbot">
+        <span class="chatbot-icon">💬</span>
+    </button>
+
+    <!-- Chatbot Popup -->
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chatbot-header">
+            <h3>MedFriend Assistant</h3>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="reset-btn" id="resetChatbot" title="Reset conversation" style="background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 5px;">🔄</button>
+                <button class="close-btn" id="closeChatbot">&times;</button>
+            </div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Initial message will be added by backend on first interaction -->
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" placeholder="Type your message..." autocomplete="off">
+            <button id="chatbotSend" class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Clerk Authentication Modal -->
+    <div class="clerk-modal" id="clerkModal">
+        <div class="clerk-modal-content">
+            <div class="clerk-modal-header">
+                <h2>Welcome to MedFriend</h2>
+                <button class="clerk-modal-close" id="closeClerkModal">&times;</button>
+            </div>
+            <div class="clerk-modal-body" id="clerk-auth-container">
+                <!-- Clerk authentication will be mounted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
